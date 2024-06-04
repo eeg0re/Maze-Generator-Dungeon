@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MazeGenerator : MonoBehaviour{
+public class InstantMazeGenerator : MonoBehaviour{
     [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
     [SerializeField] float nodeSize;
 
     [SerializeField] int randSeed;
 
-    private bool isGenerating = true;  // a variable to check if the generation is complete
-
     private void Start(){
-        StartCoroutine(GenerateMaze(mazeSize));
+        InstantGenerateMaze(mazeSize);
     }
 
-    IEnumerator GenerateMaze(Vector2Int size){
-        isGenerating = true; // set isGenerating to true because the maze is being generated
+    void InstantGenerateMaze(Vector2Int size){
 
         List<MazeNode> nodes = new List<MazeNode>();
 
@@ -27,9 +24,6 @@ public class MazeGenerator : MonoBehaviour{
                 Vector3 nodePos = new Vector3(x - (size.x/2f)*nodeSize, 0, y - (size.y / 2f))*nodeSize;       // centers node at 0,0
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
-
-                yield return null;
-
             }
         }
 
@@ -42,7 +36,6 @@ public class MazeGenerator : MonoBehaviour{
 
         // Choose a random starting node
         currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
-        currentPath[0].SetState(NodeState.Current);
 
         // while we still have nodes to go through 
         while(completedNodes.Count < nodes.Count){
@@ -114,27 +107,15 @@ public class MazeGenerator : MonoBehaviour{
                 }
 
                 currentPath.Add(chosenNode);
-                chosenNode.SetState(NodeState.Current);
             }
             else{
                 completedNodes.Add(currentPath[currentPath.Count - 1]);
-                currentPath[currentPath.Count - 1].SetState(NodeState.Completed);
                 currentPath.RemoveAt(currentPath.Count - 1);
-            }
-
-            yield return new WaitForSeconds(0.05f);
-
-            // if we've completed all the nodes
-            if(completedNodes.Count == nodes.Count){
-                isGenerating = false; // set this to false because we're done
             }
         }
     }
 
     private void Update(){
-        if(!isGenerating){
-            SceneManager.LoadScene(1);
-        }
     }
 
 }
