@@ -33,7 +33,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""id"": ""319e80c7-07be-4b85-ac8d-096cc4513e24"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -51,7 +51,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""name"": ""WASD"",
                     ""id"": ""d76027ec-a08b-452b-886c-09a30b3dc0f1"",
                     ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
@@ -104,10 +104,10 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c0d894cf-1a71-45ac-be9f-de662adc5077"",
+                    ""id"": ""89e7da08-2e42-4165-baf6-192e31d90d28"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
@@ -117,17 +117,6 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""37fb0a38-48a9-43c9-9f6b-e94ce3f92cde"",
                     ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a1d6e0ee-8bd4-4a21-8b18-2c3954852cef"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
